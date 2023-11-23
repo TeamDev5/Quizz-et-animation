@@ -103,7 +103,7 @@ const questions = [
 
 let currentQuestion = 0;
 let score = 0;
-let correctAnswers = [];
+let incorrectAnswers = [];
 
 function loadQuestion() {
     const questionElement = document.getElementById("question");
@@ -125,7 +125,8 @@ function loadQuestion() {
 function checkAnswer(choice) {
     if (choice === questions[currentQuestion].correctAnswer) {
         score++;
-        correctAnswers.push(currentQuestion);
+    } else {
+        incorrectAnswers.push(currentQuestion); // Enregistrement des réponses incorrectes
     }
 
     currentQuestion++;
@@ -141,14 +142,14 @@ function showResult() {
     const quizContainer = document.querySelector(".quiz-container");
     quizContainer.innerHTML = `<h1>Résultat :</h1><p>Score : ${score} sur ${questions.length}</p>`;
 
-    if (correctAnswers.length > 0) {
-        const correctAnswersList = correctAnswers.map((index) => {
+    if (incorrectAnswers.length > 0) {
+        const incorrectAnswersList = incorrectAnswers.map((index) => {
             return `<li>${questions[index].question} : ${questions[index].choices[questions[index].correctAnswer]}</li>`;
         });
 
-        const answersHTML = `<ul>${correctAnswersList.join("")}</ul>`;
+        const incorrectAnswersHTML = `<h2>Réponses incorrectes : </h2><ul>${incorrectAnswersList.join("")}</ul>`;
 
-        quizContainer.innerHTML += `<h2>Réponses correctes : </h2>${answersHTML}`;
+        quizContainer.innerHTML += incorrectAnswersHTML;
     }
 }
 
