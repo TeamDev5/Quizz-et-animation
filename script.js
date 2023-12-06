@@ -244,12 +244,15 @@ function loadQuestion() {
     const current = questions[currentQuestion];
     questionElement.textContent = current.question;
     choicesElement.innerHTML = "";
+
+
     if (current.image && currentQuestion === 2) {
         // Ajoutez l'image uniquement pour la question 3
         const imageElement = document.createElement("img");
         imageElement.src = current.image;
         choicesElement.appendChild(imageElement);
     }
+
     current.choices.forEach((choice, index) => {
         const choiceElement = document.createElement("div");
         choiceElement.textContent = choice;
@@ -284,7 +287,9 @@ function showResult() {
         const incorrectAnswersList = incorrectAnswers.map((index) => {
             return `<li>${questions[index].question} : ${questions[index].choices[questions[index].correctAnswer]}</li>`;
         });
+
         const incorrectAnswersHTML = `<h2>Réponses incorrectes : </h2><ul>${incorrectAnswersList.join("")}</ul>`;
+
         quizContainer.innerHTML += incorrectAnswersHTML;
     }
 }

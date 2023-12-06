@@ -47,6 +47,13 @@ body {
     border-radius: 10px;
 }
 
+.choice:hover{
+    border: 1px solid #000; 
+    background: gainsboro;
+    border-radius: 10px;
+}
+
+
 h1 {
     font-family: 'vintage';
     padding: 20px;
