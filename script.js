@@ -12,7 +12,8 @@ const questions = [
     {
         question: "Quel est le plus grand océan du monde ?",
         choices: ["Atlantique", "Pacifique", "Indien"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        image: "assets/images/image3.png" 
     },
     {
         question: "Qui a peint la Joconde ?",
@@ -49,56 +50,6 @@ const questions = [
         choices: ["Vénus", "Mars", "Jupiter"],
         correctAnswer: 1
     },
-    // {
-    //     question: "Quelle est la plus grande planète du système solaire ?",
-    //     choices: ["Terre", "Mars", "Jupiter"],
-    //     correctAnswer: 2
-    // },
-    // {
-    //     question: "Qui a peint 'Les Nymphéas' ?",
-    //     choices: ["Vincent van Gogh", "Claude Monet", "Pablo Picasso"],
-    //     correctAnswer: 1
-    // },
-    // {
-    //     question: "Quelle est la capitale de l'Espagne ?",
-    //     choices: ["Madrid", "Barcelone", "Rome"],
-    //     correctAnswer: 0
-    // },
-    // {
-    //     question: "Qui a écrit '1984' ?",
-    //     choices: ["Aldous Huxley", "George Orwell", "Franz Kafka"],
-    //     correctAnswer: 1
-    // },
-    // {
-    //     question: "Quelle est la monnaie du Japon ?",
-    //     choices: ["Yen", "Dollar", "Euro"],
-    //     correctAnswer: 0
-    // },
-    // {
-    //     question: "Quelle est la plus grande île du monde ?",
-    //     choices: ["Groenland", "Australie", "Java"],
-    //     correctAnswer: 0
-    // },
-    // {
-    //     question: "Combien de côtés a un triangle équilatéral ?",
-    //     choices: ["3", "4", "5"],
-    //     correctAnswer: 0
-    // },
-    // {
-    //     question: "Quelle est la plus haute montagne du monde ?",
-    //     choices: ["Kilimandjaro", "Mont Everest", "Mont Fuji"],
-    //     correctAnswer: 1
-    // },
-    // {
-    //     question: "Qui a écrit 'Le Petit Prince' ?",
-    //     choices: ["Antoine de Saint-Exupéry", "Victor Hugo", "Jules Verne"],
-    //     correctAnswer: 0
-    // },
-    // {
-    //     question: "Quelle est la capitale de l'Australie ?",
-    //     choices: ["Sydney", "Melbourne", "Canberra"],
-    //     correctAnswer: 2
-    // }
 ];
 
 let currentQuestion = 0;
@@ -113,14 +64,32 @@ function loadQuestion() {
     questionElement.textContent = current.question;
     choicesElement.innerHTML = "";
 
+    if (current.image && currentQuestion === 2) {
+        // Ajoutez l'image uniquement pour la question 3
+        const imageElement = document.createElement("img");
+        imageElement.src = current.image;
+        choicesElement.appendChild(imageElement);
+    }
+
     current.choices.forEach((choice, index) => {
         const choiceElement = document.createElement("div");
         choiceElement.textContent = choice;
         choiceElement.className = "choice";
+
+        choiceElement.addEventListener("mouseover", () => {
+            choiceElement.classList.add("hovered-choice");
+        });
+
+        choiceElement.addEventListener("mouseout", () => {
+            choiceElement.classList.remove("hovered-choice");
+        });
+
         choiceElement.addEventListener("click", () => checkAnswer(index));
         choicesElement.appendChild(choiceElement);
     });
 }
+
+
 
 function checkAnswer(choice) {
     if (choice === questions[currentQuestion].correctAnswer) {

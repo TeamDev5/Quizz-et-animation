@@ -1,8 +1,14 @@
+@font-face {
+    font-family: 'vintage';
+    src: url('assets/fonts/vintage/vintage.ttf');
+}
 body {
     font-family: Arial, sans-serif;
-    animation: backgroundAnimation 10s infinite alternate-reverse;
-    background: linear-gradient(45deg, #95cdff, #6ebefb, #FF3333);
+    animation: backgroundAnimation 3s infinite alternate-reverse;
+    background: linear-gradient(45deg, #95CDFF, #6EBEFB, #FF3333);
     background-size: 200% 200%;
+    margin: 0;
+    overflow: hidden;
 }
 
 @keyframes backgroundAnimation {
@@ -19,6 +25,7 @@ body {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
+    height: 100vh;
 }
 
 .choice-container {
@@ -32,7 +39,15 @@ body {
     cursor: pointer;
 }
 
+.choice:hover{
+    border: 1px solid #000; 
+    background: gainsboro;
+    border-radius: 10px;
+}
+
+
 h1 {
+    font-family: 'vintage';
     padding: 20px;
     font-size: 55px;
     animation: textAnimation 4s infinite alternate;
