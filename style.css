@@ -5,9 +5,6 @@
 
 body {
     font-family: Arial, sans-serif;
-    animation: backgroundAnimation 3s infinite alternate-reverse;
-    background: linear-gradient(45deg, #95cdff, #6ebefb, #FF3333);
-    background-size: 200% 200%;
     margin: 0;
     overflow: scroll;
 }
@@ -59,7 +56,7 @@ h1 {
     padding: 20px;
     font-size: 55px;
     animation: textAnimation 4s infinite alternate;
-    background: linear-gradient(45deg, #3498db, #e74c3c, #70219a);
+    background: linear-gradient(45deg, #000, #3872a4, #000);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -74,35 +71,23 @@ ul {
     font-size: 20px;
 }
 
-@keyframes textAnimation {
-    0% {
-        color: #3498db;
-    }
-    25% {
-        color: #e74c3c;
-    }
-    50% {
-        color: #f1c40f;
-    }
-    75% {
-        color: #e74c3c;
-    }
-    100% {
-        color: #3498db;
-    }
+
+.images-container {
+    display: flex;
+    justify-content: center; /* Pour centrer horizontalement */
+    align-items: center; /* Pour centrer verticalement si nécessaire */
 }
 
-.small-image {
-    width: 500px;
-    height: auto; /* Conserver les proportions */
+.quiz-image {
+    /* Ajoutez ici des styles spécifiques aux images si nécessaire */
+    max-width: 100%; /* Pour que les images s'adaptent à la largeur du conteneur */
 }
 
-.medium-image {
-    width: 200px;
-    height: auto; /* Conserver les proportions */
+.quiz-container ul {
+    list-style: none; /* Pour enlever les puces */
+    padding: 0; /* Pour enlever le padding par défaut des listes */
 }
 
-.large-image {
-    width: 300px;
-    height: auto; /* Conserver les proportions */
+.quiz-container ul li {
+    margin: 50px; /* Pour espacer les réponses */
 }
