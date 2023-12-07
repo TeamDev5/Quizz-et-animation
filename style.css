@@ -23,7 +23,7 @@ body {
 
 .quiz-container {
     display: block;
-    max-width: 600px;
+    max-width: 900px;
     margin: 0 auto;
     text-align: center;
     height: 100vh;
@@ -90,4 +90,19 @@ ul {
     100% {
         color: #3498db;
     }
+}
+
+.small-image {
+    width: 500px;
+    height: auto; /* Conserver les proportions */
+}
+
+.medium-image {
+    width: 200px;
+    height: auto; /* Conserver les proportions */
+}
+
+.large-image {
+    width: 300px;
+    height: auto; /* Conserver les proportions */
 }

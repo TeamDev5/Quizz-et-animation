@@ -38,7 +38,7 @@ const questions = [
             "La valeur  mailto:",
             "La valeur  blank"
         ],
-        correctAnswer: 3
+        correctAnswer: [0, 1]
     },
     {
         question: "Parmi ces affirmations à propos des commentaires, lesquelles sont correctes ?",
@@ -51,6 +51,7 @@ const questions = [
         correctAnswer: [0, 2, 3] // Plusieurs réponses sont correctes
     },
     {
+        image: "assets/images/image6.png",
         question: "Quel bout de code permet d'obtenir le résultat de l'image ci-dessous ?",
         choices: [
             "<a href='http://lien.com' title='Ceci est un lien'>Cliquez pour voir</a>",
@@ -60,6 +61,7 @@ const questions = [
         correctAnswer: 0
     },
     {
+        image: "assets/images/image7.png",
         question: "Quel bout de code correspond à l'affichage de la liste juste en dessous ?",
         choices: [
             "<ul><li>Paris</li><li>Taipei</li><li>Kyoto</li><li>Sydney</li></ul>",
@@ -70,6 +72,8 @@ const questions = [
     },
     
     {
+        image: "assets/images/image8.png",
+        image: "assets/images/image8.2.png",
         question: "Quel morceau de code permet de créer un lien vers la page 1 à la place du commentaire Insérer ici un lien vers la page 1 ?",
         choices: [
             "<a href='../page1.html'>Page 1</a>",
@@ -80,6 +84,7 @@ const questions = [
         correctAnswer: 0
     },
     {
+        image: "assets/images/image9.png",
         question: "Comment faire pour que la couleur du titre ainsi que du paragraphe soient #ff1493 ?",
         choices: [
             "h1, p { color: #ff1493; }",
@@ -90,6 +95,8 @@ const questions = [
         correctAnswer: [0, 1, 2] // Plusieurs réponses possibles
     },
     {
+        image: "assets/images/image10.png",
+        image: "assets/images/image10.2.png",
         question: "À partir de l'aperçu suivant, quelles propriétés de texte ont été appliquées dans les classes premier-paragraphe ou deuxieme-paragraphe ?",
         choices: [
             "text-align",
@@ -245,13 +252,44 @@ function loadQuestion() {
     questionElement.textContent = current.question;
     choicesElement.innerHTML = "";
 
-
-    if (current.image && currentQuestion === 2) {
-        // Ajoutez l'image uniquement pour la question 3
+    if (current.image) {
         const imageElement = document.createElement("img");
         imageElement.src = current.image;
+    
+        // Appliquer directement les styles à chaque image en fonction de la question
+        if (currentQuestion === 3) {
+            imageElement.style.width = "800px";
+        } else if (currentQuestion === 5) {
+            imageElement.style.width = "300px"; 
+        }else if (currentQuestion === 6) {
+            imageElement.style.width = "100px";
+        } else if (currentQuestion === 7) {
+            imageElement.style.width = "500px";
+        } else if (currentQuestion === 8) {
+            imageElement.style.width = "800px";
+        } else if (currentQuestion === 9) {
+            imageElement.style.width = "800px"; 
+        } else if (currentQuestion === 10) {
+            const imagesContainer = document.createElement("div"); // Créer un conteneur pour les images
+            imagesContainer.className = "images-container"; // Ajouter une classe pour le conteneur si nécessaire
+        
+            const image1 = document.createElement("img"); // Créer la première image
+            image1.src = current.image; // Utiliser la première image
+            // Définir des styles ou des classes pour la première image si nécessaire
+            imagesContainer.appendChild(image1); // Ajouter la première image au conteneur
+        
+            const image2 = document.createElement("img"); // Créer la deuxième image
+            image2.src = current.image2; // Utiliser la deuxième image
+            // Définir des styles ou des classes pour la deuxième image si nécessaire
+            imagesContainer.appendChild(image2); // Ajouter la deuxième image au conteneur
+        
+            choicesElement.appendChild(imagesContainer); // Ajouter le conteneur avec les images à l'élément des choix
+        }
+    
+        imageElement.style.height = "auto"; // Conserver les proportions
         choicesElement.appendChild(imageElement);
     }
+
 
     current.choices.forEach((choice, index) => {
         const choiceElement = document.createElement("div");
@@ -267,6 +305,7 @@ function loadQuestion() {
         choicesElement.appendChild(choiceElement);
     });
 }
+
 function checkAnswer(choice) {
     if (choice === questions[currentQuestion].correctAnswer) {
         score++;
