@@ -241,15 +241,19 @@ function checkAnswer(choice) {
     if (choice === questions[currentQuestion].correctAnswer) {
         score++;
     } else {
-        incorrectAnswers.push(currentQuestion); // Enregistrement des réponses incorrectes
+        incorrectAnswers.push(currentQuestion);
     }
+
     currentQuestion++;
+
     if (currentQuestion < questions.length) {
         loadQuestion();
     } else {
         showResult();
     }
 }
+
+
 function showResult() {
     const quizContainer = document.querySelector(".quiz-container");
 
