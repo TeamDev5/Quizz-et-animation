@@ -241,7 +241,7 @@ function checkAnswer(choice) {
     if (choice === questions[currentQuestion].correctAnswer) {
         score++;
     } else {
-        incorrectAnswers.push(currentQuestion); // Enregistrement des réponses incorrectes
+        incorrectAnswers.push(currentQuestion);
     }
     currentQuestion++;
     if (currentQuestion < questions.length) {
@@ -252,14 +252,19 @@ function checkAnswer(choice) {
 }
 function showResult() {
     const quizContainer = document.querySelector(".quiz-container");
+    const questionElement = document.getElementById("question");
+    const choicesElement = document.getElementById("choices");
 
-    // Création des éléments HTML
+    // Masquer les éléments de la question
+    questionElement.style.display = "none";
+    choicesElement.style.display = "none";
+
+    // Création des éléments HTML pour les résultats
     const resultHeading = document.createElement('h1');
     resultHeading.textContent = 'Résultat :';
 
     const scoreParagraph = document.createElement('p');
     scoreParagraph.textContent = `Score : ${score} sur ${questions.length}`;
-
 
     quizContainer.appendChild(resultHeading);
     quizContainer.appendChild(scoreParagraph);
@@ -281,7 +286,6 @@ function showResult() {
 
         quizContainer.appendChild(incorrectAnswersHeading);
         quizContainer.appendChild(incorrectAnswersUL);
-        
     }
 }
 
