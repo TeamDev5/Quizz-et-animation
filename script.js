@@ -30,11 +30,11 @@ const questions = [
         correctAnswer: 1
     },
     {
-        question: "Une valeur et un attribut permettent, ensemble, d'ouvrir un lien dans un nouvel onglet. Lesquels ?",
+        question: "Un attribut et une valeur permettent, d'ouvrir un lien dans un nouvel onglet. Lequel ?",
         choices: [
-            "L'attribut  target",
-            "L'attribut title",
-            "L'attribut  blank"
+            "L'attribut  target=\"_blank\"",
+            "L'attribut title=\"_blank\"",
+            "L'attribut  blank=\"_target\""
         ],
         correctAnswer: 0
     },
@@ -56,7 +56,7 @@ const questions = [
             "<a href='http://lien.com' title='Cliquez pour voir'>Ceci est un lien</a>",
             "<a href='http://lien.com' bulle='Cliquez pour voir'>Ceci est un lien</a>"
         ],
-        correctAnswer: 0
+        correctAnswer: 1
     },
     {
         image: "assets/images/image7.png",
@@ -78,7 +78,7 @@ const questions = [
             "<a href='./page1.html'>Page 1</a>",
             "<a href='page1.html'>Page 1</a>"
         ],
-        correctAnswer: 0
+        correctAnswer: 1
     },
     {
         image: "assets/images/image9.png",
